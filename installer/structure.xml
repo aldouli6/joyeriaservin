@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<component>
+  <table action="add" table_name="#__servin_materiales" storage_engine="" collation="utf8mb4_unicode_ci">
+    <field field_name="id" field_type="INT" field_length="11" is_autoincrement="1" index="primary" description=""/>
+    <field field_name="ordering" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="state" field_type="TINYINT" field_length="1" index="index" description=""/>
+    <field field_name="checked_out" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="checked_out_time" field_type="DATETIME" description=""/>
+    <field field_name="created_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="modified_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="nombre" field_type="VARCHAR" field_length="255" description=""/>
+  </table>
+  <table action="add" table_name="#__servin_kilatajes" storage_engine="" collation="utf8mb4_unicode_ci">
+    <field field_name="id" field_type="INT" field_length="11" is_autoincrement="1" index="primary" description=""/>
+    <field field_name="ordering" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="state" field_type="TINYINT" field_length="1" index="index" description=""/>
+    <field field_name="checked_out" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="checked_out_time" field_type="DATETIME" description=""/>
+    <field field_name="created_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="modified_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="kilataje" field_type="VARCHAR" field_length="255" description=""/>
+  </table>
+  <table action="add" table_name="#__servin_ubicaciones" storage_engine="" collation="utf8mb4_unicode_ci">
+    <field field_name="id" field_type="INT" field_length="11" is_autoincrement="1" index="primary" description=""/>
+    <field field_name="ordering" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="state" field_type="TINYINT" field_length="1" index="index" description=""/>
+    <field field_name="checked_out" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="checked_out_time" field_type="DATETIME" description=""/>
+    <field field_name="created_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="modified_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="nombre" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="direccion" field_type="VARCHAR" field_length="255" description=""/>
+  </table>
+  <table action="add" table_name="#__servin_hechuras" storage_engine="" collation="utf8mb4_unicode_ci">
+    <field field_name="id" field_type="INT" field_length="11" is_autoincrement="1" index="primary" description=""/>
+    <field field_name="ordering" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="state" field_type="TINYINT" field_length="1" index="index" description=""/>
+    <field field_name="checked_out" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="checked_out_time" field_type="DATETIME" description=""/>
+    <field field_name="created_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="modified_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="numero" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="costo" field_type="DECIMAL" description=""/>
+    <field field_name="tipo_ganancia" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="ganancia" field_type="DECIMAL" description=""/>
+  </table>
+  <table action="add" table_name="#__servin_piezas" storage_engine="" collation="utf8mb4_unicode_ci">
+    <field field_name="id" field_type="INT" field_length="11" is_autoincrement="1" index="primary" description=""/>
+    <field field_name="ordering" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="state" field_type="TINYINT" field_length="1" index="index" description=""/>
+    <field field_name="checked_out" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="checked_out_time" field_type="DATETIME" description=""/>
+    <field field_name="created_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="modified_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="modified_at" field_type="DATETIME" description=""/>
+    <field field_name="created_at" field_type="DATETIME" description=""/>
+    <field field_name="material" field_type="INT" field_length="11" description=""/>
+    <field field_name="kilataje" field_type="INT" field_length="11" description=""/>
+    <field field_name="ubicacion" field_type="INT" field_length="11" description=""/>
+    <field field_name="hechura" field_type="INT" field_length="11" description=""/>
+    <field field_name="descripcion" field_type="TEXT" description=""/>
+    <field field_name="peso" field_type="DECIMAL" description=""/>
+    <field field_name="precio" field_type="DECIMAL" description=""/>
+    <field field_name="estatus" field_type="VARCHAR" field_length="255" description=""/>
+  </table>
+  <table action="add" table_name="#__servin_deudas" storage_engine="" collation="utf8mb4_unicode_ci">
+    <field field_name="id" field_type="INT" field_length="11" is_autoincrement="1" index="primary" description=""/>
+    <field field_name="ordering" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="state" field_type="TINYINT" field_length="1" index="index" description=""/>
+    <field field_name="checked_out" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="checked_out_time" field_type="DATETIME" description=""/>
+    <field field_name="created_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="modified_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="created_at" field_type="DATETIME" description=""/>
+    <field field_name="modified_at" field_type="DATETIME" description=""/>
+    <field field_name="proveedor" field_type="INT" field_length="11" description=""/>
+    <field field_name="fecha_compra" field_type="DATETIME" description=""/>
+    <field field_name="fecha_limite" field_type="DATETIME" description=""/>
+    <field field_name="total" field_type="DECIMAL" description=""/>
+    <field field_name="abono" field_type="DECIMAL" description=""/>
+    <field field_name="saldo" field_type="DECIMAL" description=""/>
+    <field field_name="resumen" field_type="TEXT" description=""/>
+    <field field_name="estatus" field_type="VARCHAR" field_length="255" description=""/>
+  </table>
+  <table action="add" table_name="#__servin_proveedores" storage_engine="" collation="utf8mb4_unicode_ci">
+    <field field_name="id" field_type="INT" field_length="11" is_autoincrement="1" index="primary" description=""/>
+    <field field_name="ordering" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="state" field_type="TINYINT" field_length="1" index="index" description=""/>
+    <field field_name="checked_out" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="checked_out_time" field_type="DATETIME" description=""/>
+    <field field_name="created_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="modified_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="empresa" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="nombre" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="direccion" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="telefono" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="correo" field_type="VARCHAR" field_length="255" description=""/>
+  </table>
+  <table action="add" table_name="#__servin_compras" storage_engine="" collation="utf8mb4_unicode_ci">
+    <field field_name="id" field_type="INT" field_length="11" is_autoincrement="1" index="primary" description=""/>
+    <field field_name="ordering" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="state" field_type="TINYINT" field_length="1" index="index" description=""/>
+    <field field_name="checked_out" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="checked_out_time" field_type="DATETIME" description=""/>
+    <field field_name="created_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="modified_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="created_at" field_type="DATETIME" description=""/>
+    <field field_name="modified_at" field_type="DATETIME" description=""/>
+    <field field_name="piezas" field_type="TEXT" description=""/>
+    <field field_name="fecha" field_type="DATETIME" description=""/>
+    <field field_name="proveedor" field_type="INT" field_length="11" description=""/>
+  </table>
+  <table action="add" table_name="#__servin_clientes" storage_engine="" collation="utf8mb4_unicode_ci">
+    <field field_name="id" field_type="INT" field_length="11" is_autoincrement="1" index="primary" description=""/>
+    <field field_name="ordering" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="state" field_type="TINYINT" field_length="1" index="index" description=""/>
+    <field field_name="checked_out" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="checked_out_time" field_type="DATETIME" description=""/>
+    <field field_name="created_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="modified_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="nombre" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="direccion" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="telefono" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="correo" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="fotoine" field_type="TEXT" description=""/>
+    <field field_name="fotocomprobante" field_type="TEXT" description=""/>
+    <field action="remove" field_name="created_at"/>
+  </table>
+  <table action="add" table_name="#__servin_ventas" storage_engine="" collation="utf8mb4_unicode_ci">
+    <field field_name="id" field_type="INT" field_length="11" is_autoincrement="1" index="primary" description=""/>
+    <field field_name="ordering" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="state" field_type="TINYINT" field_length="1" index="index" description=""/>
+    <field field_name="checked_out" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="checked_out_time" field_type="DATETIME" description=""/>
+    <field field_name="created_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="modified_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="created_at" field_type="DATETIME" description=""/>
+    <field field_name="modified_at" field_type="DATETIME" description=""/>
+    <field field_name="piezas" field_type="TEXT" description=""/>
+    <field field_name="fecha" field_type="DATETIME" description=""/>
+    <field field_name="cliente" field_type="TEXT" description=""/>
+    <field field_name="total" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="metodo_pago" field_type="VARCHAR" field_length="255" description=""/>
+  </table>
+  <table action="change" old_name="#__servin_consignacion" new_name="#__servin_consignaciones" table_name="#__servin_consignaciones" storage_engine="" collation="utf8mb4_unicode_ci">
+    <field field_name="id" field_type="INT" field_length="11" is_autoincrement="1" index="primary" description=""/>
+    <field field_name="ordering" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="state" field_type="TINYINT" field_length="1" index="index" description=""/>
+    <field field_name="checked_out" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="checked_out_time" field_type="DATETIME" description=""/>
+    <field field_name="created_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="modified_by" field_type="INT" field_length="11" index="index" description=""/>
+    <field field_name="created_at" field_type="DATETIME" description=""/>
+    <field field_name="modified_at" field_type="DATETIME" description=""/>
+    <field field_name="cliente" field_type="TEXT" description=""/>
+    <field field_name="no_folio_pagare" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="foto_pagare" field_type="TEXT" description=""/>
+    <field field_name="piezas" field_type="TEXT" description=""/>
+    <field field_name="total" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="abono" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="devoluciones" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="adeudo" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="fecha_emision" field_type="DATETIME" description=""/>
+    <field field_name="fecha_limite" field_type="DATETIME" description=""/>
+    <field field_name="devolucion" field_type="VARCHAR" field_length="255" description=""/>
+    <field field_name="fecha_devolucion" field_type="DATETIME" description=""/>
+    <field action="change" field_name="estatus" field_type="VARCHAR" field_length="255" description=""/>
+  </table>
+</component>
