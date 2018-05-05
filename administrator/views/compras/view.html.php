@@ -155,6 +155,7 @@ class ServinViewCompras extends JViewLegacy
 			'a.`piezas`' => JText::_('COM_SERVIN_COMPRAS_PIEZAS'),
 			'a.`fecha`' => JText::_('COM_SERVIN_COMPRAS_FECHA'),
 			'a.`proveedor`' => JText::_('COM_SERVIN_COMPRAS_PROVEEDOR'),
+			'a.`total`' => JText::_('COM_SERVIN_COMPRAS_TOTAL'),
 		);
 	}
 

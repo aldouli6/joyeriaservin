@@ -19,7 +19,7 @@ jimport('joomla.application.component.modellist');
  *
  * @since  1.6
  */
-class ServinModelConsignaciones extends JModelList
+class ServinModelTareasautomaticass extends JModelList
 {
 	/**
 	 * Constructor.
@@ -34,26 +34,7 @@ class ServinModelConsignaciones extends JModelList
 		if (empty($config['filter_fields']))
 		{
 			$config['filter_fields'] = array(
-				'id', 'a.id',
-				'ordering', 'a.ordering',
-				'state', 'a.state',
-				'created_by', 'a.created_by',
-				'modified_by', 'a.modified_by',
-				'created_at', 'a.created_at',
-				'modified_at', 'a.modified_at',
-				'cliente', 'a.cliente',
-				'no_folio_pagare', 'a.no_folio_pagare',
-				'foto_pagare', 'a.foto_pagare',
-				'piezas', 'a.piezas',
-				'total', 'a.total',
-				'abono', 'a.abono',
-				'devoluciones', 'a.devoluciones',
-				'adeudo', 'a.adeudo',
-				'fecha_emision', 'a.fecha_emision',
-				'fecha_limite', 'a.fecha_limite',
-				'devolucion', 'a.devolucion',
-				'fecha_devolucion', 'a.fecha_devolucion',
-				'estatus', 'a.estatus',
+				
 			);
 		}
 
@@ -122,139 +103,8 @@ class ServinModelConsignaciones extends JModelList
 	 */
 	protected function getListQuery()
 	{
-		// Create a new query object.
-		$db    = $this->getDbo();
-		$query = $db->getQuery(true);
-
-		// Select the required fields from the table.
-		$query
-			->select(
-				$this->getState(
-					'list.select', 'DISTINCT a.*'
-				)
-			);
-
-		$query->from('`#__servin_consignaciones` AS a');
-		
-		// Join over the users for the checked out user.
-		$query->select('uc.name AS uEditor');
-		$query->join('LEFT', '#__users AS uc ON uc.id=a.checked_out');
-
-		// Join over the created by field 'created_by'
-		$query->join('LEFT', '#__users AS created_by ON created_by.id = a.created_by');
-
-		// Join over the created by field 'modified_by'
-		$query->join('LEFT', '#__users AS modified_by ON modified_by.id = a.modified_by');
-		// Join over the foreign key 'cliente'
-		$query->select('`#__servin_clientes_2990181`.`nombre` AS clientes_fk_value_2990181');
-		$query->join('LEFT', '#__servin_clientes AS #__servin_clientes_2990181 ON #__servin_clientes_2990181.`id` = a.`cliente`');
-		// Join over the foreign key 'piezas'
-		$query->select('CONCAT(`#__servin_piezas_2990185`.`hechura`, \' \', `#__servin_piezas_2990185`.`descripcion`) AS piezas_fk_value_2990185');
-		$query->join('LEFT', '#__servin_piezas AS #__servin_piezas_2990185 ON #__servin_piezas_2990185.`id` = a.`piezas`');
-		// Join over the foreign key 'devoluciones'
-		$query->select('`#__servin_consignaciones_2993742`.`no_folio_pagare` AS #__servin_consignaciones_fk_value_2993742');
-		$query->join('LEFT', '#__servin_consignaciones AS #__servin_consignaciones_2993742 ON #__servin_consignaciones_2993742.`id` = a.`devoluciones`');
-		
-		if (!Factory::getUser()->authorise('core.edit', 'com_servin'))
-		{
-			$query->where('a.state = 1');
-		}
-
-		// Filter by search in title
-		$search = $this->getState('filter.search');
-
-		if (!empty($search))
-		{
-			if (stripos($search, 'id:') === 0)
-			{
-				$query->where('a.id = ' . (int) substr($search, 3));
-			}
-			else
-			{
-				$search = $db->Quote('%' . $db->escape($search, true) . '%');
-				$query->where('(#__servin_clientes_2990181.nombre LIKE ' . $search . '  OR  a.no_folio_pagare LIKE ' . $search . '  OR CONCAT(`#__servin_piezas_2990185`.`hechura`, \' \', `#__servin_piezas_2990185`.`descripcion`) LIKE ' . $search . ' )');
-			}
-		}
-		
-
-		// Filtering cliente
-		$filter_cliente = $this->state->get("filter.cliente");
-
-		if ($filter_cliente)
-		{
-			$query->where("FIND_IN_SET('" . $db->escape($filter_cliente) . "',a.cliente)");
-		}
-
-		// Filtering piezas
-		$filter_piezas = $this->state->get("filter.piezas");
-
-		if ($filter_piezas)
-		{
-			$query->where("FIND_IN_SET('" . $db->escape($filter_piezas) . "',a.piezas)");
-		}
-
-		// Filtering fecha_emision
-		// Checking "_dateformat"
-		$filter_fecha_emision_from = $this->state->get("filter.fecha_emision_from_dateformat");
-		$filter_Qfecha_emision_from = (!empty($filter_fecha_emision_from)) ? $this->isValidDate($filter_fecha_emision_from) : null;
-
-		if ($filter_Qfecha_emision_from != null)
-		{
-			$query->where("a.fecha_emision >= '" . $db->escape($filter_Qfecha_emision_from) . "'");
-		}
-
-		$filter_fecha_emision_to = $this->state->get("filter.fecha_emision_to_dateformat");
-		$filter_Qfecha_emision_to = (!empty($filter_fecha_emision_to)) ? $this->isValidDate($filter_fecha_emision_to) : null ;
-
-		if ($filter_Qfecha_emision_to != null)
-		{
-			$query->where("a.fecha_emision <= '" . $db->escape($filter_Qfecha_emision_to) . "'");
-		}
-
-		// Filtering fecha_limite
-		// Checking "_dateformat"
-		$filter_fecha_limite_from = $this->state->get("filter.fecha_limite_from_dateformat");
-		$filter_Qfecha_limite_from = (!empty($filter_fecha_limite_from)) ? $this->isValidDate($filter_fecha_limite_from) : null;
-
-		if ($filter_Qfecha_limite_from != null)
-		{
-			$query->where("a.fecha_limite >= '" . $db->escape($filter_Qfecha_limite_from) . "'");
-		}
-
-		$filter_fecha_limite_to = $this->state->get("filter.fecha_limite_to_dateformat");
-		$filter_Qfecha_limite_to = (!empty($filter_fecha_limite_to)) ? $this->isValidDate($filter_fecha_limite_to) : null ;
-
-		if ($filter_Qfecha_limite_to != null)
-		{
-			$query->where("a.fecha_limite <= '" . $db->escape($filter_Qfecha_limite_to) . "'");
-		}
-
-		// Filtering fecha_devolucion
-		// Checking "_dateformat"
-		$filter_fecha_devolucion_from = $this->state->get("filter.fecha_devolucion_from_dateformat");
-		$filter_Qfecha_devolucion_from = (!empty($filter_fecha_devolucion_from)) ? $this->isValidDate($filter_fecha_devolucion_from) : null;
-
-		if ($filter_Qfecha_devolucion_from != null)
-		{
-			$query->where("a.fecha_devolucion >= '" . $db->escape($filter_Qfecha_devolucion_from) . "'");
-		}
-
-		$filter_fecha_devolucion_to = $this->state->get("filter.fecha_devolucion_to_dateformat");
-		$filter_Qfecha_devolucion_to = (!empty($filter_fecha_devolucion_to)) ? $this->isValidDate($filter_fecha_devolucion_to) : null ;
-
-		if ($filter_Qfecha_devolucion_to != null)
-		{
-			$query->where("a.fecha_devolucion <= '" . $db->escape($filter_Qfecha_devolucion_to) . "'");
-		}
-
-		// Add the list ordering clause.
-		$orderCol  = $this->state->get('list.ordering');
-		$orderDirn = $this->state->get('list.direction');
-
-		if ($orderCol && $orderDirn)
-		{
-			$query->order($db->escape($orderCol . ' ' . $orderDirn));
-		}
+		$db	= $this->getDbo();
+		$query	= $db->getQuery(true);
 
 		return $query;
 	}

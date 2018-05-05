@@ -263,6 +263,7 @@ class ServinModelDeudas extends JModelList
 
 				$oneItem->proveedor = !empty($textValue) ? implode(', ', $textValue) : $oneItem->proveedor;
 			}
+					$oneItem->estatus = ($oneItem->estatus == '') ? '' : JText::_('COM_SERVIN_DEUDAS_ESTATUS_OPTION_' . strtoupper($oneItem->estatus));
 		}
 
 		return $items;

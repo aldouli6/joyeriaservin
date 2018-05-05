@@ -179,6 +179,10 @@ class ServinModelHechuras extends JModelList
 	{
 		$items = parent::getItems();
 
+		foreach ($items as $oneItem)
+		{
+					$oneItem->tipo_ganancia = ($oneItem->tipo_ganancia == '') ? '' : JText::_('COM_SERVIN_HECHURAS_TIPO_GANANCIA_OPTION_' . strtoupper($oneItem->tipo_ganancia));
+		}
 
 		return $items;
 	}

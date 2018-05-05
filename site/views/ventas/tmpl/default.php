@@ -113,15 +113,15 @@ $canDelete  = $user->authorise('core.delete', 'com_servin');
 					<?php echo $item->cliente; ?>
 				</td>
 				<td>
+
+					<?php echo $item->total; ?>
+				</td>
+				<td>
 				<?php if (isset($item->checked_out) && $item->checked_out) : ?>
 					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'ventas.', $canCheckin); ?>
 				<?php endif; ?>
 				<a href="<?php echo JRoute::_('index.php?option=com_servin&view=venta&id='.(int) $item->id); ?>">
-				<?php echo $this->escape($item->total); ?></a>
-				</td>
-				<td>
-
-					<?php echo $item->metodo_pago; ?>
+				<?php echo $this->escape($item->metodo_pago); ?></a>
 				</td>
 
 

@@ -360,11 +360,11 @@ if ($limit > 0) {
         case 'exact':
             $text = $db->quote('%' . $db->escape($text, true) . '%', false);
             $wheres2 = array();
-            $wheres2[] = '`servin_materiales`.`nombre` LIKE ' . $text;
+            $wheres2[] = 'a.descripcion LIKE ' . $text;
+$wheres2[] = '`servin_materiales`.`nombre` LIKE ' . $text;
 $wheres2[] = '`servin_kilatajes`.`kilataje` LIKE ' . $text;
 $wheres2[] = '`servin_ubicaciones`.`nombre` LIKE ' . $text;
 $wheres2[] = '`servin_hechuras`.`numero` LIKE ' . $text;
-$wheres2[] = 'a.descripcion LIKE ' . $text;
 $wheres2[] = 'a.peso LIKE ' . $text;
 $wheres2[] = 'a.precio LIKE ' . $text;
 $wheres2[] = 'a.estatus LIKE ' . $text;
@@ -380,11 +380,11 @@ $wheres2[] = 'a.estatus LIKE ' . $text;
             foreach ($words as $word) {
                 $word = $db->quote('%' . $db->escape($word, true) . '%', false);
                 $wheres2 = array();
-                $wheres2[] = '`servin_materiales`.`nombre` LIKE ' . $word;
+                $wheres2[] = 'a.descripcion LIKE ' . $word;
+$wheres2[] = '`servin_materiales`.`nombre` LIKE ' . $word;
 $wheres2[] = '`servin_kilatajes`.`kilataje` LIKE ' . $word;
 $wheres2[] = '`servin_ubicaciones`.`nombre` LIKE ' . $word;
 $wheres2[] = '`servin_hechuras`.`numero` LIKE ' . $word;
-$wheres2[] = 'a.descripcion LIKE ' . $word;
 $wheres2[] = 'a.peso LIKE ' . $word;
 $wheres2[] = 'a.precio LIKE ' . $word;
 $wheres2[] = 'a.estatus LIKE ' . $word;
@@ -606,6 +606,7 @@ if ($limit > 0) {
             $wheres2[] = 'CONCAT(`servin_piezas`.`hechura`, \' \', `servin_piezas`.`descripcion`) LIKE ' . $text;
 $wheres2[] = 'a.fecha LIKE ' . $text;
 $wheres2[] = 'CONCAT(`servin_proveedores`.`empresa`, \' \', `servin_proveedores`.`nombre`) LIKE ' . $text;
+$wheres2[] = 'a.total LIKE ' . $text;
             $where = '(' . implode(') OR (', $wheres2) . ')';
             break;
 
@@ -621,6 +622,7 @@ $wheres2[] = 'CONCAT(`servin_proveedores`.`empresa`, \' \', `servin_proveedores`
                 $wheres2[] = 'CONCAT(`servin_piezas`.`hechura`, \' \', `servin_piezas`.`descripcion`) LIKE ' . $word;
 $wheres2[] = 'a.fecha LIKE ' . $word;
 $wheres2[] = 'CONCAT(`servin_proveedores`.`empresa`, \' \', `servin_proveedores`.`nombre`) LIKE ' . $word;
+$wheres2[] = 'a.total LIKE ' . $word;
                 $wheres[] = implode(' OR ', $wheres2);
             }
 
@@ -794,9 +796,9 @@ $wheres2[] = 'a.metodo_pago LIKE ' . $word;
             ->select(
                     array(
                         'a.id',
-                        'a.total AS title',
+                        'a.id AS title',
                         'a.created_at AS created',
-                        'a.total AS text',
+                        'a.id AS text',
                         '"Venta" AS section',
                         '1 AS browsernav'
                     )

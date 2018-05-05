@@ -72,6 +72,9 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_SERVIN_PIEZAS_ID', 'a.`id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SERVIN_PIEZAS_DESCRIPCION', 'a.`descripcion`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_SERVIN_PIEZAS_MATERIAL', 'a.`material`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
@@ -82,9 +85,6 @@ $sortFields = $this->getSortFields();
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_SERVIN_PIEZAS_HECHURA', 'a.`hechura`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_SERVIN_PIEZAS_DESCRIPCION', 'a.`descripcion`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_SERVIN_PIEZAS_PESO', 'a.`peso`', $listDirn, $listOrder); ?>
@@ -152,6 +152,17 @@ $sortFields = $this->getSortFields();
 
 					<?php echo $item->id; ?>
 				</td>				<td>
+				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
+					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'piezas.', $canCheckin); ?>
+				<?php endif; ?>
+				<?php if ($canEdit) : ?>
+					<a href="<?php echo JRoute::_('index.php?option=com_servin&task=pieza.edit&id='.(int) $item->id); ?>">
+					<?php echo $this->escape($item->descripcion); ?></a>
+				<?php else : ?>
+					<?php echo $this->escape($item->descripcion); ?>
+				<?php endif; ?>
+
+				</td>				<td>
 
 					<?php echo $item->material; ?>
 				</td>				<td>
@@ -163,17 +174,6 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->hechura; ?>
-				</td>				<td>
-				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
-					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'piezas.', $canCheckin); ?>
-				<?php endif; ?>
-				<?php if ($canEdit) : ?>
-					<a href="<?php echo JRoute::_('index.php?option=com_servin&task=pieza.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->descripcion); ?></a>
-				<?php else : ?>
-					<?php echo $this->escape($item->descripcion); ?>
-				<?php endif; ?>
-
 				</td>				<td>
 
 					<?php echo $item->peso; ?>

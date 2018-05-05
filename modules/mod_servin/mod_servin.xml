@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3.0" method="upgrade" client="site">
     <name>MOD_SERVIN_NAME</name>
-    <creationDate>2018-05-02</creationDate>
+    <creationDate>2018-05-05</creationDate>
     <copyright>2018 Aldo Ulises</copyright>
     <license>Licencia Pública General GNU versión 2 o posterior. Consulte LICENSE.txt</license>
     <author>Aldo Ulises</author>
@@ -107,11 +107,11 @@
 		<option value="modified_by">modified_by</option>
 		<option value="modified_at">modified_at</option>
 		<option value="created_at">created_at</option>
+		<option value="descripcion">descripcion</option>
 		<option value="material">material</option>
 		<option value="kilataje">kilataje</option>
 		<option value="ubicacion">ubicacion</option>
 		<option value="hechura">hechura</option>
-		<option value="descripcion">descripcion</option>
 		<option value="peso">peso</option>
 		<option value="precio">precio</option>
 		<option value="estatus">estatus</option>
@@ -150,6 +150,7 @@
 		<option value="piezas">piezas</option>
 		<option value="fecha">fecha</option>
 		<option value="proveedor">proveedor</option>
+		<option value="total">total</option>
 	</group>
 	<group label="#__servin_clientes">
 		<option value="id">id</option>

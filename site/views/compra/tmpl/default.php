@@ -37,6 +37,11 @@ if (!$canEdit && JFactory::getUser()->authorise('core.edit.own', 'com_servin'))
 			<td><?php echo $this->item->proveedor; ?></td>
 		</tr>
 
+		<tr>
+			<th><?php echo JText::_('COM_SERVIN_FORM_LBL_COMPRA_TOTAL'); ?></th>
+			<td><?php echo $this->item->total; ?></td>
+		</tr>
+
 	</table>
 
 </div>

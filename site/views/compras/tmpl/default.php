@@ -50,6 +50,9 @@ $canDelete  = $user->authorise('core.delete', 'com_servin');
 				<th class=''>
 				<?php echo JHtml::_('grid.sort',  'COM_SERVIN_COMPRAS_PROVEEDOR', 'a.proveedor', $listDirn, $listOrder); ?>
 				</th>
+				<th class=''>
+				<?php echo JHtml::_('grid.sort',  'COM_SERVIN_COMPRAS_TOTAL', 'a.total', $listDirn, $listOrder); ?>
+				</th>
 
 
 							<?php if ($canEdit || $canDelete): ?>
@@ -105,6 +108,10 @@ $canDelete  = $user->authorise('core.delete', 'com_servin');
 				<td>
 
 					<?php echo $item->proveedor; ?>
+				</td>
+				<td>
+
+					<?php echo $item->total; ?>
 				</td>
 
 

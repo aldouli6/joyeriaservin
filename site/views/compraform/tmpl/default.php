@@ -72,6 +72,8 @@ $canEdit = ServinHelpersServin::canUserEdit($this->item, $user);
 			<input type="hidden" class="proveedor" name="jform[proveedorhidden][<?php echo $value; ?>]" value="<?php echo $value; ?>" />
 		<?php endif; ?>
 	<?php endforeach; ?>
+	<?php echo $this->form->renderField('total'); ?>
+
 			<div class="control-group">
 				<div class="controls">
 

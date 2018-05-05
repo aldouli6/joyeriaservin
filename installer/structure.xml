@@ -40,9 +40,9 @@
     <field field_name="created_by" field_type="INT" field_length="11" index="index" description=""/>
     <field field_name="modified_by" field_type="INT" field_length="11" index="index" description=""/>
     <field field_name="numero" field_type="VARCHAR" field_length="255" description=""/>
-    <field field_name="costo" field_type="DECIMAL" description=""/>
-    <field field_name="tipo_ganancia" field_type="VARCHAR" field_length="255" description=""/>
-    <field field_name="ganancia" field_type="DECIMAL" description=""/>
+    <field action="change" field_name="costo" field_type="DOUBLE" description=""/>
+    <field action="change" field_name="tipo_ganancia" field_type="VARCHAR" field_length="255" description=""/>
+    <field action="change" field_name="ganancia" field_type="DOUBLE" description=""/>
   </table>
   <table action="add" table_name="#__servin_piezas" storage_engine="" collation="utf8mb4_unicode_ci">
     <field field_name="id" field_type="INT" field_length="11" is_autoincrement="1" index="primary" description=""/>
@@ -54,14 +54,14 @@
     <field field_name="modified_by" field_type="INT" field_length="11" index="index" description=""/>
     <field field_name="modified_at" field_type="DATETIME" description=""/>
     <field field_name="created_at" field_type="DATETIME" description=""/>
+    <field field_name="descripcion" field_type="TEXT" description=""/>
     <field field_name="material" field_type="INT" field_length="11" description=""/>
     <field field_name="kilataje" field_type="INT" field_length="11" description=""/>
     <field field_name="ubicacion" field_type="INT" field_length="11" description=""/>
     <field field_name="hechura" field_type="INT" field_length="11" description=""/>
-    <field field_name="descripcion" field_type="TEXT" description=""/>
-    <field field_name="peso" field_type="DECIMAL" description=""/>
-    <field field_name="precio" field_type="DECIMAL" description=""/>
-    <field field_name="estatus" field_type="VARCHAR" field_length="255" description=""/>
+    <field action="change" field_name="peso" field_type="DOUBLE" description=""/>
+    <field action="change" field_name="precio" field_type="DOUBLE" description=""/>
+    <field action="change" field_name="estatus" field_type="VARCHAR" field_length="255" description=""/>
   </table>
   <table action="add" table_name="#__servin_deudas" storage_engine="" collation="utf8mb4_unicode_ci">
     <field field_name="id" field_type="INT" field_length="11" is_autoincrement="1" index="primary" description=""/>
@@ -76,11 +76,11 @@
     <field field_name="proveedor" field_type="INT" field_length="11" description=""/>
     <field field_name="fecha_compra" field_type="DATETIME" description=""/>
     <field field_name="fecha_limite" field_type="DATETIME" description=""/>
-    <field field_name="total" field_type="DECIMAL" description=""/>
-    <field field_name="abono" field_type="DECIMAL" description=""/>
-    <field field_name="saldo" field_type="DECIMAL" description=""/>
+    <field action="change" field_name="total" field_type="DOUBLE" description=""/>
+    <field action="change" field_name="abono" field_type="DOUBLE" description=""/>
+    <field action="change" field_name="saldo" field_type="DOUBLE" description=""/>
     <field field_name="resumen" field_type="TEXT" description=""/>
-    <field field_name="estatus" field_type="VARCHAR" field_length="255" description=""/>
+    <field action="change" field_name="estatus" field_type="VARCHAR" field_length="255" description=""/>
   </table>
   <table action="add" table_name="#__servin_proveedores" storage_engine="" collation="utf8mb4_unicode_ci">
     <field field_name="id" field_type="INT" field_length="11" is_autoincrement="1" index="primary" description=""/>
@@ -109,6 +109,7 @@
     <field field_name="piezas" field_type="TEXT" description=""/>
     <field field_name="fecha" field_type="DATETIME" description=""/>
     <field field_name="proveedor" field_type="INT" field_length="11" description=""/>
+    <field field_name="total" field_type="DOUBLE" description=""/>
   </table>
   <table action="add" table_name="#__servin_clientes" storage_engine="" collation="utf8mb4_unicode_ci">
     <field field_name="id" field_type="INT" field_length="11" is_autoincrement="1" index="primary" description=""/>
@@ -139,7 +140,7 @@
     <field field_name="piezas" field_type="TEXT" description=""/>
     <field field_name="fecha" field_type="DATETIME" description=""/>
     <field field_name="cliente" field_type="TEXT" description=""/>
-    <field field_name="total" field_type="VARCHAR" field_length="255" description=""/>
+    <field action="change" field_name="total" field_type="DOUBLE" description=""/>
     <field field_name="metodo_pago" field_type="VARCHAR" field_length="255" description=""/>
   </table>
   <table action="change" old_name="#__servin_consignacion" new_name="#__servin_consignaciones" table_name="#__servin_consignaciones" storage_engine="" collation="utf8mb4_unicode_ci">
@@ -156,10 +157,10 @@
     <field field_name="no_folio_pagare" field_type="VARCHAR" field_length="255" description=""/>
     <field field_name="foto_pagare" field_type="TEXT" description=""/>
     <field field_name="piezas" field_type="TEXT" description=""/>
-    <field field_name="total" field_type="VARCHAR" field_length="255" description=""/>
-    <field field_name="abono" field_type="VARCHAR" field_length="255" description=""/>
+    <field action="change" field_name="total" field_type="DOUBLE" description=""/>
+    <field action="change" field_name="abono" field_type="DOUBLE" description=""/>
     <field field_name="devoluciones" field_type="VARCHAR" field_length="255" description=""/>
-    <field field_name="adeudo" field_type="VARCHAR" field_length="255" description=""/>
+    <field action="change" field_name="adeudo" field_type="DOUBLE" description=""/>
     <field field_name="fecha_emision" field_type="DATETIME" description=""/>
     <field field_name="fecha_limite" field_type="DATETIME" description=""/>
     <field field_name="devolucion" field_type="VARCHAR" field_length="255" description=""/>

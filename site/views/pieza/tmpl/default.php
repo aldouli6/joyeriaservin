@@ -23,6 +23,11 @@ if (!$canEdit && JFactory::getUser()->authorise('core.edit.own', 'com_servin'))
 		
 
 		<tr>
+			<th><?php echo JText::_('COM_SERVIN_FORM_LBL_PIEZA_DESCRIPCION'); ?></th>
+			<td><?php echo nl2br($this->item->descripcion); ?></td>
+		</tr>
+
+		<tr>
 			<th><?php echo JText::_('COM_SERVIN_FORM_LBL_PIEZA_MATERIAL'); ?></th>
 			<td><?php echo $this->item->material; ?></td>
 		</tr>
@@ -40,11 +45,6 @@ if (!$canEdit && JFactory::getUser()->authorise('core.edit.own', 'com_servin'))
 		<tr>
 			<th><?php echo JText::_('COM_SERVIN_FORM_LBL_PIEZA_HECHURA'); ?></th>
 			<td><?php echo $this->item->hechura; ?></td>
-		</tr>
-
-		<tr>
-			<th><?php echo JText::_('COM_SERVIN_FORM_LBL_PIEZA_DESCRIPCION'); ?></th>
-			<td><?php echo nl2br($this->item->descripcion); ?></td>
 		</tr>
 
 		<tr>

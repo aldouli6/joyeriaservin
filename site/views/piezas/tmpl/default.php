@@ -42,6 +42,9 @@ $canDelete  = $user->authorise('core.delete', 'com_servin');
 				<?php echo JHtml::_('grid.sort',  'COM_SERVIN_PIEZAS_ID', 'a.id', $listDirn, $listOrder); ?>
 				</th>
 				<th class=''>
+				<?php echo JHtml::_('grid.sort',  'COM_SERVIN_PIEZAS_DESCRIPCION', 'a.descripcion', $listDirn, $listOrder); ?>
+				</th>
+				<th class=''>
 				<?php echo JHtml::_('grid.sort',  'COM_SERVIN_PIEZAS_MATERIAL', 'a.material', $listDirn, $listOrder); ?>
 				</th>
 				<th class=''>
@@ -52,9 +55,6 @@ $canDelete  = $user->authorise('core.delete', 'com_servin');
 				</th>
 				<th class=''>
 				<?php echo JHtml::_('grid.sort',  'COM_SERVIN_PIEZAS_HECHURA', 'a.hechura', $listDirn, $listOrder); ?>
-				</th>
-				<th class=''>
-				<?php echo JHtml::_('grid.sort',  'COM_SERVIN_PIEZAS_DESCRIPCION', 'a.descripcion', $listDirn, $listOrder); ?>
 				</th>
 				<th class=''>
 				<?php echo JHtml::_('grid.sort',  'COM_SERVIN_PIEZAS_PESO', 'a.peso', $listDirn, $listOrder); ?>
@@ -110,6 +110,13 @@ $canDelete  = $user->authorise('core.delete', 'com_servin');
 					<?php echo $item->id; ?>
 				</td>
 				<td>
+				<?php if (isset($item->checked_out) && $item->checked_out) : ?>
+					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'piezas.', $canCheckin); ?>
+				<?php endif; ?>
+				<a href="<?php echo JRoute::_('index.php?option=com_servin&view=pieza&id='.(int) $item->id); ?>">
+				<?php echo $this->escape($item->descripcion); ?></a>
+				</td>
+				<td>
 
 					<?php echo $item->material; ?>
 				</td>
@@ -124,13 +131,6 @@ $canDelete  = $user->authorise('core.delete', 'com_servin');
 				<td>
 
 					<?php echo $item->hechura; ?>
-				</td>
-				<td>
-				<?php if (isset($item->checked_out) && $item->checked_out) : ?>
-					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'piezas.', $canCheckin); ?>
-				<?php endif; ?>
-				<a href="<?php echo JRoute::_('index.php?option=com_servin&view=pieza&id='.(int) $item->id); ?>">
-				<?php echo $this->escape($item->descripcion); ?></a>
 				</td>
 				<td>
 

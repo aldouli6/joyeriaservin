@@ -161,7 +161,7 @@ class ServinModelVentas extends JModelList
 			else
 			{
 				$search = $db->Quote('%' . $db->escape($search, true) . '%');
-				$query->where('(CONCAT(`#__servin_piezas_2990167`.`hechura`, \' \', `#__servin_piezas_2990167`.`descripcion`) LIKE ' . $search . '  OR #__servin_clientes_2990169.nombre LIKE ' . $search . '  OR  a.total LIKE ' . $search . ' )');
+				$query->where('(CONCAT(`#__servin_piezas_2990167`.`hechura`, \' \', `#__servin_piezas_2990167`.`descripcion`) LIKE ' . $search . '  OR #__servin_clientes_2990169.nombre LIKE ' . $search . ' )');
 			}
 		}
 		

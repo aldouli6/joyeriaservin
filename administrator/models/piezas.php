@@ -38,11 +38,11 @@ class ServinModelPiezas extends JModelList
 				'modified_by', 'a.`modified_by`',
 				'modified_at', 'a.`modified_at`',
 				'created_at', 'a.`created_at`',
+				'descripcion', 'a.`descripcion`',
 				'material', 'a.`material`',
 				'kilataje', 'a.`kilataje`',
 				'ubicacion', 'a.`ubicacion`',
 				'hechura', 'a.`hechura`',
-				'descripcion', 'a.`descripcion`',
 				'peso', 'a.`peso`',
 				'precio', 'a.`precio`',
 				'estatus', 'a.`estatus`',
@@ -93,7 +93,7 @@ class ServinModelPiezas extends JModelList
 		$this->setState('params', $params);
 
 		// List state information.
-		parent::populateState('a.material', 'asc');
+		parent::populateState('a.descripcion', 'asc');
 	}
 
 	/**
@@ -184,7 +184,7 @@ class ServinModelPiezas extends JModelList
 			else
 			{
 				$search = $db->Quote('%' . $db->escape($search, true) . '%');
-				$query->where('(#__servin_materiales_2984789.nombre LIKE ' . $search . '  OR #__servin_kilatajes_2984790.kilataje LIKE ' . $search . '  OR #__servin_ubicaciones_2984791.nombre LIKE ' . $search . '  OR #__servin_hechuras_2984792.numero LIKE ' . $search . '  OR  a.descripcion LIKE ' . $search . '  OR  a.peso LIKE ' . $search . '  OR  a.precio LIKE ' . $search . '  OR  a.estatus LIKE ' . $search . ' )');
+				$query->where('( a.descripcion LIKE ' . $search . '  OR #__servin_materiales_2984789.nombre LIKE ' . $search . '  OR #__servin_kilatajes_2984790.kilataje LIKE ' . $search . '  OR #__servin_ubicaciones_2984791.nombre LIKE ' . $search . '  OR #__servin_hechuras_2984792.numero LIKE ' . $search . '  OR  a.peso LIKE ' . $search . '  OR  a.precio LIKE ' . $search . '  OR  a.estatus LIKE ' . $search . ' )');
 			}
 		}
 
@@ -347,6 +347,7 @@ class ServinModelPiezas extends JModelList
 
 				$oneItem->hechura = !empty($textValue) ? implode(', ', $textValue) : $oneItem->hechura;
 			}
+					$oneItem->estatus = ($oneItem->estatus == '') ? '' : JText::_('COM_SERVIN_PIEZAS_ESTATUS_OPTION_' . strtoupper($oneItem->estatus));
 		}
 
 		return $items;

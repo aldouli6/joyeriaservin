@@ -94,7 +94,8 @@ $document->addStyleSheet(JUri::root() . 'media/com_servin/css/form.css');
 						echo '<input type="hidden" class="proveedor" name="jform[proveedorhidden]['.$value.']" value="'.$value.'" />';
 					endif;
 				endforeach;
-			?>
+			?>				<?php echo $this->form->renderField('total'); ?>
+
 
 					<?php if ($this->state->params->get('save_history', 1)) : ?>
 					<div class="control-group">

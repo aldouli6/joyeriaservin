@@ -44,6 +44,7 @@ class ServinModelCompras extends JModelList
 				'piezas', 'a.piezas',
 				'fecha', 'a.fecha',
 				'proveedor', 'a.proveedor',
+				'total', 'a.total',
 			);
 		}
 

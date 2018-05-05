@@ -16,7 +16,7 @@
     <field name="piezas" type="foreignkey" label="COM_SERVIN_FORM_LBL_VENTA_PIEZAS" description="COM_SERVIN_FORM_DESC_VENTA_PIEZAS" class="inputbox" input_type="list" table="#__servin_piezas" key_field="id" value_multiple="1" value_field_multiple="hechura,descripcion" value_field="fk_value" separator=" " hide_trashed="1" multiple="multiple" default="0"/>
     <field name="fecha" class="inputbox" timeformat="12" filter="user_utc" showtime="true" singleheader="false" todaybutton="true" weeknumbers="false" filltable="false" type="calendar" label="COM_SERVIN_FORM_LBL_VENTA_FECHA" description="COM_SERVIN_FORM_DESC_VENTA_FECHA" hint="COM_SERVIN_FORM_LBL_VENTA_FECHA"/>
     <field name="cliente" type="foreignkey" label="COM_SERVIN_FORM_LBL_VENTA_CLIENTE" description="COM_SERVIN_FORM_DESC_VENTA_CLIENTE" class="inputbox" input_type="list" table="#__servin_clientes" key_field="id" value_field="nombre" hide_trashed="1" multiple="multiple" default="0"/>
-    <field name="total" filter="safehtml" type="text" label="COM_SERVIN_FORM_LBL_VENTA_TOTAL" description="COM_SERVIN_FORM_DESC_VENTA_TOTAL" hint="COM_SERVIN_FORM_LBL_VENTA_TOTAL"/>
+    <field name="total" filter="safehtml" step="0.01" type="number" label="COM_SERVIN_FORM_LBL_VENTA_TOTAL" description="COM_SERVIN_FORM_DESC_VENTA_TOTAL" hint="COM_SERVIN_FORM_LBL_VENTA_TOTAL"/>
     <field name="metodo_pago" default="1" type="list" label="COM_SERVIN_FORM_LBL_VENTA_METODO_PAGO" description="COM_SERVIN_FORM_DESC_VENTA_METODO_PAGO" hint="COM_SERVIN_FORM_LBL_VENTA_METODO_PAGO">
       <option value="1">COM_SERVIN_VENTAS_METODO_PAGO_OPTION_1</option>
       <option value="2">COM_SERVIN_VENTAS_METODO_PAGO_OPTION_2</option>

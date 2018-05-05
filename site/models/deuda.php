@@ -158,6 +158,7 @@ class ServinModelDeuda extends JModelItem
 			$this->_item->proveedor = !empty($textValue) ? implode(', ', $textValue) : $this->_item->proveedor;
 
 		}
+					$this->_item->estatus = JText::_('COM_SERVIN_DEUDAS_ESTATUS_OPTION_' . $this->_item->estatus);
 
 		return $this->_item;
 	}

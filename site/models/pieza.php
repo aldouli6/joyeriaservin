@@ -260,6 +260,7 @@ class ServinModelPieza extends JModelItem
 			$this->_item->hechura = !empty($textValue) ? implode(', ', $textValue) : $this->_item->hechura;
 
 		}
+					$this->_item->estatus = JText::_('COM_SERVIN_PIEZAS_ESTATUS_OPTION_' . $this->_item->estatus);
 
 		return $this->_item;
 	}

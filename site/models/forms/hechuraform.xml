@@ -12,12 +12,12 @@
     <field name="checked_out" type="hidden" filter="unset"/>
     <field name="checked_out_time" default="0000-00-00 00:00:00" type="hidden" filter="unset"/>
     <field name="numero" filter="safehtml" type="text" required="true" label="COM_SERVIN_FORM_LBL_HECHURA_NUMERO" description="COM_SERVIN_FORM_DESC_HECHURA_NUMERO" hint="COM_SERVIN_FORM_LBL_HECHURA_NUMERO"/>
-    <field name="costo" required="true" label="COM_SERVIN_FORM_LBL_HECHURA_COSTO" description="COM_SERVIN_FORM_DESC_HECHURA_COSTO" hint="COM_SERVIN_FORM_LBL_HECHURA_COSTO"/>
-    <field name="tipo_ganancia" type="combo" required="true" label="COM_SERVIN_FORM_LBL_HECHURA_TIPO_GANANCIA" description="COM_SERVIN_FORM_DESC_HECHURA_TIPO_GANANCIA" hint="COM_SERVIN_FORM_LBL_HECHURA_TIPO_GANANCIA">
+    <field name="costo" filter="safehtml" min="0" step=".01" type="number" required="true" label="COM_SERVIN_FORM_LBL_HECHURA_COSTO" description="COM_SERVIN_FORM_DESC_HECHURA_COSTO" hint="COM_SERVIN_FORM_LBL_HECHURA_COSTO"/>
+    <field name="tipo_ganancia" type="radio" required="true" label="COM_SERVIN_FORM_LBL_HECHURA_TIPO_GANANCIA" description="COM_SERVIN_FORM_DESC_HECHURA_TIPO_GANANCIA" hint="COM_SERVIN_FORM_LBL_HECHURA_TIPO_GANANCIA">
       <option value="porcentaje">COM_SERVIN_HECHURAS_TIPO_GANANCIA_OPTION_PORCENTAJE</option>
       <option value="fijo">COM_SERVIN_HECHURAS_TIPO_GANANCIA_OPTION_FIJO</option>
     </field>
-    <field name="ganancia" required="true" label="COM_SERVIN_FORM_LBL_HECHURA_GANANCIA" description="COM_SERVIN_FORM_DESC_HECHURA_GANANCIA" hint="COM_SERVIN_FORM_LBL_HECHURA_GANANCIA"/>
+    <field name="ganancia" filter="safehtml" min="0" step="0.01" type="number" required="true" label="COM_SERVIN_FORM_LBL_HECHURA_GANANCIA" description="COM_SERVIN_FORM_DESC_HECHURA_GANANCIA" hint="COM_SERVIN_FORM_LBL_HECHURA_GANANCIA"/>
     <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
   </fieldset>
 </form>

@@ -16,6 +16,7 @@
     <field name="piezas" type="foreignkey" label="COM_SERVIN_FORM_LBL_COMPRA_PIEZAS" description="COM_SERVIN_FORM_DESC_COMPRA_PIEZAS" class="inputbox" input_type="list" table="#__servin_piezas" key_field="id" value_multiple="1" value_field_multiple="hechura,descripcion" value_field="fk_value" separator=" " hide_trashed="1" multiple="multiple" default="0"/>
     <field name="fecha" class="inputbox" timeformat="12" filter="user_utc" showtime="true" singleheader="false" todaybutton="true" weeknumbers="false" filltable="false" type="calendar" label="COM_SERVIN_FORM_LBL_COMPRA_FECHA" description="COM_SERVIN_FORM_DESC_COMPRA_FECHA" hint="COM_SERVIN_FORM_LBL_COMPRA_FECHA"/>
     <field name="proveedor" type="foreignkey" label="COM_SERVIN_FORM_LBL_COMPRA_PROVEEDOR" description="COM_SERVIN_FORM_DESC_COMPRA_PROVEEDOR" class="inputbox" input_type="list" table="#__servin_proveedores" key_field="id" value_multiple="1" value_field_multiple="empresa,nombre" value_field="fk_value" separator=" |" hide_trashed="1" default="0"/>
+    <field name="total" filter="safehtml" step="0.01" type="number" label="COM_SERVIN_FORM_LBL_COMPRA_TOTAL" description="COM_SERVIN_FORM_DESC_COMPRA_TOTAL" hint="COM_SERVIN_FORM_LBL_COMPRA_TOTAL"/>
     <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
   </fieldset>
 </form>

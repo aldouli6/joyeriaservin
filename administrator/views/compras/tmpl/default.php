@@ -80,6 +80,9 @@ $sortFields = $this->getSortFields();
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_SERVIN_COMPRAS_PROVEEDOR', 'a.`proveedor`', $listDirn, $listOrder); ?>
 				</th>
+				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SERVIN_COMPRAS_TOTAL', 'a.`total`', $listDirn, $listOrder); ?>
+				</th>
 
 					
 				</tr>
@@ -145,6 +148,9 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->proveedor; ?>
+				</td>				<td>
+
+					<?php echo $item->total; ?>
 				</td>
 
 					</tr>

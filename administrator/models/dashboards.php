@@ -150,6 +150,7 @@ class ServinModelDashboards extends JModelList
 
 				$oneItem->piezas = !empty($textValue) ? implode(', ', $textValue) : $oneItem->piezas;
 			}
+					$oneItem->estatus = ($oneItem->estatus == '') ? '' : JText::_('COM_SERVIN_CONSIGNACIONES_ESTATUS_OPTION_' . strtoupper($oneItem->estatus));
 		}
 
 		return $items;

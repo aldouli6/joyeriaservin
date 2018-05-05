@@ -18,13 +18,13 @@
     <field name="proveedor" type="foreignkey" label="COM_SERVIN_FORM_LBL_DEUDA_PROVEEDOR" description="COM_SERVIN_FORM_DESC_DEUDA_PROVEEDOR" class="inputbox" input_type="list" table="#__servin_proveedores" key_field="id" value_multiple="1" value_field_multiple="empresa,nombre" value_field="fk_value" separator=" |" hide_trashed="1" default="0"/>
     <field name="fecha_compra" class="inputbox" timeformat="12" filter="user_utc" showtime="true" singleheader="false" todaybutton="true" weeknumbers="false" filltable="false" type="calendar" label="COM_SERVIN_FORM_LBL_DEUDA_FECHA_COMPRA" description="COM_SERVIN_FORM_DESC_DEUDA_FECHA_COMPRA" hint="COM_SERVIN_FORM_LBL_DEUDA_FECHA_COMPRA"/>
     <field name="fecha_limite" class="inputbox" timeformat="12" filter="user_utc" showtime="true" singleheader="false" todaybutton="true" weeknumbers="false" filltable="false" type="calendar" label="COM_SERVIN_FORM_LBL_DEUDA_FECHA_LIMITE" description="COM_SERVIN_FORM_DESC_DEUDA_FECHA_LIMITE" hint="COM_SERVIN_FORM_LBL_DEUDA_FECHA_LIMITE"/>
-    <field name="total" label="COM_SERVIN_FORM_LBL_DEUDA_TOTAL" description="COM_SERVIN_FORM_DESC_DEUDA_TOTAL" hint="COM_SERVIN_FORM_LBL_DEUDA_TOTAL"/>
-    <field name="abono" label="COM_SERVIN_FORM_LBL_DEUDA_ABONO" description="COM_SERVIN_FORM_DESC_DEUDA_ABONO" hint="COM_SERVIN_FORM_LBL_DEUDA_ABONO"/>
-    <field name="saldo" label="COM_SERVIN_FORM_LBL_DEUDA_SALDO" description="COM_SERVIN_FORM_DESC_DEUDA_SALDO" hint="COM_SERVIN_FORM_LBL_DEUDA_SALDO"/>
+    <field name="total" filter="safehtml" step="0.01" type="number" label="COM_SERVIN_FORM_LBL_DEUDA_TOTAL" description="COM_SERVIN_FORM_DESC_DEUDA_TOTAL" hint="COM_SERVIN_FORM_LBL_DEUDA_TOTAL"/>
+    <field name="abono" filter="safehtml" step="0.01" type="number" label="COM_SERVIN_FORM_LBL_DEUDA_ABONO" description="COM_SERVIN_FORM_DESC_DEUDA_ABONO" hint="COM_SERVIN_FORM_LBL_DEUDA_ABONO"/>
+    <field name="saldo" filter="safehtml" step="0.01" type="number" label="COM_SERVIN_FORM_LBL_DEUDA_SALDO" description="COM_SERVIN_FORM_DESC_DEUDA_SALDO" hint="COM_SERVIN_FORM_LBL_DEUDA_SALDO"/>
     <field name="resumen" filter="safehtml" type="textarea" label="COM_SERVIN_FORM_LBL_DEUDA_RESUMEN" description="COM_SERVIN_FORM_DESC_DEUDA_RESUMEN" hint="COM_SERVIN_FORM_LBL_DEUDA_RESUMEN"/>
-    <field name="estatus" type="combo" label="COM_SERVIN_FORM_LBL_DEUDA_ESTATUS" description="COM_SERVIN_FORM_DESC_DEUDA_ESTATUS" hint="COM_SERVIN_FORM_LBL_DEUDA_ESTATUS">
-      <option value="pendiente">COM_SERVIN_DEUDAS_ESTATUS_OPTION_PENDIENTE</option>
-      <option value="pagada">COM_SERVIN_DEUDAS_ESTATUS_OPTION_PAGADA</option>
+    <field name="estatus" type="radio" label="COM_SERVIN_FORM_LBL_DEUDA_ESTATUS" description="COM_SERVIN_FORM_DESC_DEUDA_ESTATUS" hint="COM_SERVIN_FORM_LBL_DEUDA_ESTATUS">
+      <option value="1">COM_SERVIN_DEUDAS_ESTATUS_OPTION_1</option>
+      <option value="2">COM_SERVIN_DEUDAS_ESTATUS_OPTION_2</option>
     </field>
     <field name="version_note" type="text" label="JGLOBAL_FIELD_VERSION_NOTE_LABEL" description="JGLOBAL_FIELD_VERSION_NOTE_DESC" class="inputbox" size="45" labelclass="control-label"/>
   </fieldset>

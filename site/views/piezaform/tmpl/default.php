@@ -56,6 +56,8 @@ $canEdit = ServinHelpersServin::canUserEdit($this->item, $user);
 				<?php echo $this->form->getInput('modified_by'); ?>
 				<?php echo $this->form->getInput('modified_at'); ?>
 				<?php echo $this->form->getInput('created_at'); ?>
+	<?php echo $this->form->renderField('descripcion'); ?>
+
 	<?php echo $this->form->renderField('material'); ?>
 
 	<?php foreach((array)$this->item->material as $value): ?>
@@ -84,8 +86,6 @@ $canEdit = ServinHelpersServin::canUserEdit($this->item, $user);
 			<input type="hidden" class="hechura" name="jform[hechurahidden][<?php echo $value; ?>]" value="<?php echo $value; ?>" />
 		<?php endif; ?>
 	<?php endforeach; ?>
-	<?php echo $this->form->renderField('descripcion'); ?>
-
 	<?php echo $this->form->renderField('peso'); ?>
 
 	<?php echo $this->form->renderField('precio'); ?>

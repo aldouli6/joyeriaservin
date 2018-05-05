@@ -124,6 +124,7 @@ class ServinModelHechura extends JModelItem
 		{
 			$this->_item->modified_by_name = Factory::getUser($this->_item->modified_by)->name;
 		}
+					$this->_item->tipo_ganancia = JText::_('COM_SERVIN_HECHURAS_TIPO_GANANCIA_OPTION_' . $this->_item->tipo_ganancia);
 
 		return $this->_item;
 	}

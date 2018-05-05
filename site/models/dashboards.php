@@ -204,6 +204,7 @@ class ServinModelDashboards extends JModelList
 				$item->devoluciones = !empty($textValue) ? implode(', ', $textValue) : $item->devoluciones;
 			}
 
+				$item->estatus = empty($item->estatus) ? '' : JText::_('COM_SERVIN_CONSIGNACIONES_ESTATUS_OPTION_' . strtoupper($item->estatus));
 		}
 
 		return $items;

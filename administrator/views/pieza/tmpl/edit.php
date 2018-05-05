@@ -50,6 +50,34 @@ $document->addStyleSheet(JUri::root() . 'media/com_servin/css/form.css');
 			js('#jform_hechura option[value="'+js(this).val()+'"]').attr('selected',true);
 		}
 	});
+	js('#jform_peso').on('change',function(e){
+	    js.ajax({ 
+            url: "index.php?option=com_servin&task=preciosugerido&view=ajaxs&tmpl=ajax&id=" + js('#jform_hechura').val(),  
+            async: true, 
+            success: function(result){
+            	var peso = js('#jform_peso').val();
+            	var preciosugerido = peso * result 
+            	js('#jform_precio').val(preciosugerido); 
+            },
+            error: function(result) {
+                
+            }
+        });
+    });
+    js('#jform_hechura').on('change',function(e){
+	    js.ajax({ 
+            url: "index.php?option=com_servin&task=preciosugerido&view=ajaxs&tmpl=ajax&id=" + js('#jform_hechura').val(),  
+            async: true, 
+            success: function(result){
+            	var peso = js('#jform_peso').val();
+            	var preciosugerido = peso * result 
+            	js('#jform_precio').val(preciosugerido); 
+            },
+            error: function(result) {
+                
+            }
+        });
+    });
 	js("#jform_hechura").trigger("liszt:updated");
 	});
 

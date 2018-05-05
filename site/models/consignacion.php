@@ -226,6 +226,7 @@ class ServinModelConsignacion extends JModelItem
 			$this->_item->devoluciones = !empty($textValue) ? implode(', ', $textValue) : $this->_item->devoluciones;
 
 		}
+					$this->_item->estatus = JText::_('COM_SERVIN_CONSIGNACIONES_ESTATUS_OPTION_' . $this->_item->estatus);
 
 		return $this->_item;
 	}

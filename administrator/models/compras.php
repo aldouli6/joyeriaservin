@@ -41,6 +41,7 @@ class ServinModelCompras extends JModelList
 				'piezas', 'a.`piezas`',
 				'fecha', 'a.`fecha`',
 				'proveedor', 'a.`proveedor`',
+				'total', 'a.`total`',
 			);
 		}
 
@@ -171,7 +172,7 @@ class ServinModelCompras extends JModelList
 			else
 			{
 				$search = $db->Quote('%' . $db->escape($search, true) . '%');
-				$query->where('(CONCAT(`#__servin_piezas_2984831`.`hechura`, \' \', `#__servin_piezas_2984831`.`descripcion`) LIKE ' . $search . '  OR  a.fecha LIKE ' . $search . '  OR CONCAT(`#__servin_proveedores_2984833`.`empresa`, \' \', `#__servin_proveedores_2984833`.`nombre`) LIKE ' . $search . ' )');
+				$query->where('(CONCAT(`#__servin_piezas_2984831`.`hechura`, \' \', `#__servin_piezas_2984831`.`descripcion`) LIKE ' . $search . '  OR  a.fecha LIKE ' . $search . '  OR CONCAT(`#__servin_proveedores_2984833`.`empresa`, \' \', `#__servin_proveedores_2984833`.`nombre`) LIKE ' . $search . '  OR  a.total LIKE ' . $search . ' )');
 			}
 		}
 

@@ -186,6 +186,9 @@ class ModServinHelper
 		case 'created_at':
 		$result = $field_value;
 		break;
+		case 'descripcion':
+		$result = $field_value;
+		break;
 		case 'material':
 		$result = self::loadValueFromExternalTable('#__servin_materiales', 'id', 'nombre', $field_value);
 		break;
@@ -197,9 +200,6 @@ class ModServinHelper
 		break;
 		case 'hechura':
 		$result = self::loadValueFromExternalTable('#__servin_hechuras', 'id', 'numero', $field_value);
-		break;
-		case 'descripcion':
-		$result = $field_value;
 		break;
 		case 'peso':
 		$result = $field_value;
@@ -314,6 +314,9 @@ class ModServinHelper
 		break;
 		case 'proveedor':
 		$result = self::loadValueFromExternalTable('#__servin_proveedores', 'id', '', $field_value);
+		break;
+		case 'total':
+		$result = $field_value;
 		break;
 		}
 		break;
