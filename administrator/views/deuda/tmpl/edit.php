@@ -20,6 +20,38 @@ $document = JFactory::getDocument();
 $document->addStyleSheet(JUri::root() . 'media/com_servin/css/form.css');
 ?>
 <script type="text/javascript">
+	function round(num, scale) {
+	  if(!("" + num).includes("e")) {
+	    return +(Math.round(num + "e+" + scale)  + "e-" + scale);  
+	  } else {
+	    var arr = ("" + num).split("e");
+	    var sig = ""
+	    if(+arr[1] + scale > 0) {
+	      sig = "+";
+	    }
+	    var i = +arr[0] + "e" + sig + (+arr[1] + scale);
+	    var j = Math.round(i);
+	    var k = +(j + "e-" + scale);
+	    return k;  
+	    alert(k);
+	  }
+	}
+	function calcular(){
+		js('#jform_total').attr('min',js('#jform_abono').val());
+		js('#jform_abono').attr('max',js('#jform_total').val());
+		var tota = js('#jform_total').val();
+	    var abon = js('#jform_abono').val();
+	    var sal = tota - abon;
+	    var sald = js('#jform_saldo').val(round(sal,2));
+	    var saux = js('#jform_saldoaux').val(round(sal,2));	
+	    if(round(sal,2) == 0){
+	    	js("input[name='jform[estatus]' ]").val(2);
+	    	js("#jform_estatus1").prop("checked", true);
+	    }else{
+	    	js("input[name='jform[estatus]' ]").val(1);
+	    	js("#jform_estatus0").prop("checked", true);
+	    } 
+	}
 	js = jQuery.noConflict();
 	js(document).ready(function () {
 		
@@ -30,6 +62,16 @@ $document->addStyleSheet(JUri::root() . 'media/com_servin/css/form.css');
 		}
 	});
 	js("#jform_proveedor").trigger("liszt:updated");
+	js('#jform_saldoaux').val(js('#jform_saldo').val());
+	js('#jform_total').attr('min',js('#jform_abono').val());
+	js('#jform_abono').attr('max',js('#jform_total').val());
+	js('#jform_total').on('change',function(e){
+		calcular();
+    });
+    js('#jform_abono').on('change',function(e){
+		calcular();
+    });
+
 	});
 
 	Joomla.submitbutton = function (task) {

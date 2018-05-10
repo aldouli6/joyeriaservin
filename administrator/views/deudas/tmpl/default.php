@@ -35,7 +35,11 @@ if ($saveOrder)
 
 $sortFields = $this->getSortFields();
 ?>
-
+<style type="text/css">
+	.atrasada {
+		font-weight: bold;
+	}
+</style>
 <form action="<?php echo JRoute::_('index.php?option=com_servin&view=deudas'); ?>" method="post"
 	  name="adminForm" id="adminForm">
 	<?php if (!empty($this->sidebar)): ?>
@@ -72,6 +76,9 @@ $sortFields = $this->getSortFields();
 				<?php echo JHtml::_('searchtools.sort',  'COM_SERVIN_DEUDAS_ID', 'a.`id`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
+				<?php echo JHtml::_('searchtools.sort',  'COM_SERVIN_DEUDAS_RESUMEN', 'a.`resumen`', $listDirn, $listOrder); ?>
+				</th>
+				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_SERVIN_DEUDAS_PROVEEDOR', 'a.`proveedor`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
@@ -88,9 +95,6 @@ $sortFields = $this->getSortFields();
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_SERVIN_DEUDAS_SALDO', 'a.`saldo`', $listDirn, $listOrder); ?>
-				</th>
-				<th class='left'>
-				<?php echo JHtml::_('searchtools.sort',  'COM_SERVIN_DEUDAS_RESUMEN', 'a.`resumen`', $listDirn, $listOrder); ?>
 				</th>
 				<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_SERVIN_DEUDAS_ESTATUS', 'a.`estatus`', $listDirn, $listOrder); ?>
@@ -113,8 +117,10 @@ $sortFields = $this->getSortFields();
 					$canEdit    = $user->authorise('core.edit', 'com_servin');
 					$canCheckin = $user->authorise('core.manage', 'com_servin');
 					$canChange  = $user->authorise('core.edit.state', 'com_servin');
+					$atrasada = ( $item->estatus == 'Pendiente' && $item->fecha_limite <= date("Y-m-d"))?'atrasada':'' ;
+					// if($item->estatus = 'Pendiente' && date_diff( date_create($item->fecha_limite) , date_create(date("Y-m-d")) )  )
 					?>
-					<tr class="row<?php echo $i % 2; ?>">
+					<tr class="row<?php echo $i % 2;?> <?=$atrasada ?>">
 
 						<?php if (isset($this->items[0]->ordering)) : ?>
 							<td class="order nowrap center hidden-phone">
@@ -149,9 +155,26 @@ $sortFields = $this->getSortFields();
 						<?php endif; ?>
 
 										<td>
+				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
+					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'deudas.', $canCheckin); ?>
+				<?php endif; ?>
+				<?php if ($canEdit) : ?>
+					<a href="<?php echo JRoute::_('index.php?option=com_servin&task=deuda.edit&id='.(int) $item->id); ?>">
+					<?php echo $this->escape($item->id); ?></a>
+				<?php else : ?>
+					<?php echo $this->escape($item->id); ?>
+				<?php endif; ?>
 
-					<?php echo $item->id; ?>
 				</td>				<td>
+				
+				<?php if ($canEdit) : ?>
+					<a href="<?php echo JRoute::_('index.php?option=com_servin&task=deuda.edit&id='.(int) $item->id); ?>">
+					<?php echo $this->escape($item->resumen); ?></a>
+				<?php else : ?>
+					<?php echo $this->escape($item->resumen); ?>
+				<?php endif; ?>
+
+				</td> <td>
 
 					<?php echo $item->proveedor; ?>
 				</td>				<td>
@@ -169,18 +192,7 @@ $sortFields = $this->getSortFields();
 				</td>				<td>
 
 					<?php echo $item->saldo; ?>
-				</td>				<td>
-				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
-					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'deudas.', $canCheckin); ?>
-				<?php endif; ?>
-				<?php if ($canEdit) : ?>
-					<a href="<?php echo JRoute::_('index.php?option=com_servin&task=deuda.edit&id='.(int) $item->id); ?>">
-					<?php echo $this->escape($item->resumen); ?></a>
-				<?php else : ?>
-					<?php echo $this->escape($item->resumen); ?>
-				<?php endif; ?>
-
-				</td>				<td>
+				</td>								<td>
 
 					<?php echo $item->estatus; ?>
 				</td>

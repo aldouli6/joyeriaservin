@@ -92,7 +92,7 @@ class ServinModelDeudas extends JModelList
 		$this->setState('params', $params);
 
 		// List state information.
-		parent::populateState('a.proveedor', 'asc');
+		parent::populateState('a.estatus', 'asc');
 	}
 
 	/**
@@ -217,12 +217,14 @@ class ServinModelDeudas extends JModelList
 		// Add the list ordering clause.
 		$orderCol  = $this->state->get('list.ordering');
 		$orderDirn = $this->state->get('list.direction');
-
 		if ($orderCol && $orderDirn)
-		{
-			$query->order($db->escape($orderCol . ' ' . $orderDirn));
+		{	
+			if($orderCol=='a.estatus'){
+				$query->order($db->escape('a.`estatus`, a.`fecha_limite` ' . $orderDirn));
+			}else{
+				$query->order($db->escape($orderCol . ' ' . $orderDirn));
+			}			
 		}
-
 		return $query;
 	}
 
