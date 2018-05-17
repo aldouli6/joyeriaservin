@@ -139,9 +139,17 @@ $sortFields = $this->getSortFields();
 </td>
 						<?php endif; ?>
 
-										<td>
+																				<td>
+				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>
+					<?php echo JHtml::_('jgrid.checkedout', $i, $item->uEditor, $item->checked_out_time, 'ventas.', $canCheckin); ?>
+				<?php endif; ?>
+				<?php if ($canEdit) : ?>
+					<a href="<?php echo JRoute::_('index.php?option=com_servin&task=venta.edit&id='.(int) $item->id); ?>">
+					<?php echo $this->escape($item->id); ?></a>
+				<?php else : ?>
+					<?php echo $this->escape($item->id); ?>
+				<?php endif; ?>
 
-					<?php echo $item->id; ?>
 				</td>				<td>
 
 					<?php echo $item->piezas; ?>

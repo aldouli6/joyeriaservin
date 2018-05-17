@@ -18,11 +18,27 @@ JHtml::_('behavior.keepalive');
 // Import CSS
 $document = JFactory::getDocument();
 $document->addStyleSheet(JUri::root() . 'media/com_servin/css/form.css');
+$db = JFactory::getDbo();
+$query = $db->getQuery(true);
+$piezas=array();
+foreach((array)$this->item->piezas as $value): 
+	if(!is_array($value)):
+		$piezas[]= $value;
+	endif;
+endforeach;
+$query="sELECT p.id FROM #__servin_piezas as p inner join #__servin_hechuras as h on h.id = p.hechura where p.estatus != 1 and p.id not in (".implode(',', $piezas).")";
+$db -> setQuery($query);
+$result=$db -> loadColumn();
 ?>
 <script type="text/javascript">
 	js = jQuery.noConflict();
+
 	js(document).ready(function () {
-		
+	var obj = '<?php echo json_encode($result); ?>';
+	var objeto = JSON.parse(obj);
+	js.each( objeto, function( key, value ) {
+		js("#jform_piezas option[value='"+value+"']").remove();
+	});	
 	js('input:hidden.piezas').each(function(){
 		var name = js(this).attr('name');
 		if(name.indexOf('piezashidden')){
@@ -37,6 +53,19 @@ $document->addStyleSheet(JUri::root() . 'media/com_servin/css/form.css');
 		}
 	});
 	js("#jform_cliente").trigger("liszt:updated");
+	js('#jform_piezas').on('change',function(e){
+		 js.ajax({ 
+            url: "index.php?option=com_servin&task=consultotal&view=ajaxs&tmpl=ajax&string=" + js(this).val(),  
+            async: true, 
+            success: function(result){
+            	js('#jform_total').val(result); 
+            },
+            error: function(result) {
+                console.log(result);
+            }
+    	});
+    });
+
 	});
 
 	Joomla.submitbutton = function (task) {
@@ -77,11 +106,12 @@ $document->addStyleSheet(JUri::root() . 'media/com_servin/css/form.css');
 				<?php echo $this->form->renderField('created_by'); ?>
 				<?php echo $this->form->renderField('modified_by'); ?>
 				<?php echo $this->form->renderField('created_at'); ?>
-				<?php echo $this->form->renderField('modified_at'); ?>				<?php echo $this->form->renderField('piezas'); ?>
+				<?php echo $this->form->renderField('modified_at'); ?>				
+				<?php echo $this->form->renderField('piezas'); ?>
 
 			<?php
 				foreach((array)$this->item->piezas as $value): 
-					if(!is_array($value)):
+					if(!is_array($value) ):
 						echo '<input type="hidden" class="piezas" name="jform[piezashidden]['.$value.']" value="'.$value.'" />';
 					endif;
 				endforeach;

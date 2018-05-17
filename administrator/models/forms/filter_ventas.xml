@@ -14,7 +14,7 @@
             <option value="">JOPTION_SELECT_PUBLISHED</option>
         </field>
 
-        <field name="piezas" type="sql" label="COM_SERVIN_FORM_LBL_VENTA_PIEZAS" query="SELECT '' AS `id`, 'COM_SERVIN_VENTAS_PIEZAS_FILTER' AS `val` UNION SELECT `id` AS `id`,  CONCAT(`hechura`, ' ', `descripcion`) AS val FROM `#__servin_piezas` WHERE state != -2" key_field="id" value_field="val" class="inputbox" onchange="this.form.submit()" translate="true"/>
+        <field name="piezas" type="sql" label="COM_SERVIN_FORM_LBL_VENTA_PIEZAS" query="SELECT '' AS `id`, 'COM_SERVIN_VENTAS_PIEZAS_FILTER' AS `val` UNION SELECT p.id, concat(h.numero,'|' ,p.descripcion) as descripcion FROM #__servin_piezas as p inner join #__servin_hechuras as h on h.id = p.hechura  WHERE p.state != -2" key_field="id" value_field="val" class="inputbox" onchange="this.form.submit()" translate="true"/>
 <field name="fecha.from" label="COM_SERVIN_VENTAS_FECHA_FILTER_FROM" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_SERVIN_VENTAS_FECHA_FILTER_FROM"/>
 <field name="fecha.to" label="COM_SERVIN_VENTAS_FECHA_FILTER_TO" type="calendar" onchange="this.form.submit();" filter="safehtml" class="inputbox" showtime="false" translateformat="false" hint="COM_SERVIN_VENTAS_FECHA_FILTER_TO"/>
 <field name="cliente" type="sql" label="COM_SERVIN_FORM_LBL_VENTA_CLIENTE" query="SELECT '' AS `id`, 'COM_SERVIN_VENTAS_CLIENTE_FILTER' AS `val` UNION SELECT `id` AS `id`, `nombre` AS val FROM `#__servin_clientes` WHERE state != -2" key_field="id" value_field="val" class="inputbox" onchange="this.form.submit()" translate="true"/>
