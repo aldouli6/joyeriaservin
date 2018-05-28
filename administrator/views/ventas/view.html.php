@@ -79,10 +79,10 @@ class ServinViewVentas extends JViewLegacy
 			{
 				JToolBarHelper::addNew('venta.add', 'JTOOLBAR_NEW');
 
-				if (isset($this->items[0]))
+				/*if (isset($this->items[0]))
 				{
 					JToolbarHelper::custom('ventas.duplicate', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
-				}
+				}*/
 			}
 
 			if ($canDo->get('core.edit') && isset($this->items[0]))
@@ -91,7 +91,7 @@ class ServinViewVentas extends JViewLegacy
 			}
 		}
 
-		if ($canDo->get('core.edit.state'))
+		/*if ($canDo->get('core.edit.state'))
 		{
 			if (isset($this->items[0]->state))
 			{
@@ -115,7 +115,7 @@ class ServinViewVentas extends JViewLegacy
 			{
 				JToolBarHelper::custom('ventas.checkin', 'checkin.png', 'checkin_f2.png', 'JTOOLBAR_CHECKIN', true);
 			}
-		}
+		}*/
 
 		// Show trash and delete for components that uses the state field
 		if (isset($this->items[0]->state))

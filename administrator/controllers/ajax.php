@@ -13,11 +13,11 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.controllerform');
 
 /**
- * Deuda controller class.
+ * Ajax controller class.
  *
  * @since  1.6
  */
-class ServinControllerDeuda extends JControllerForm
+class ServinControllerAjax extends JControllerForm
 {
 	/**
 	 * Constructor
@@ -26,8 +26,7 @@ class ServinControllerDeuda extends JControllerForm
 	 */
 	public function __construct()
 	{
-		$this->view_list = 'deudas';
+		$this->view_list = 'ajaxs';
 		parent::__construct();
 	}
-	
 }

@@ -14,7 +14,14 @@ JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 JHtml::_('formbehavior.chosen', 'select');
 JHtml::_('behavior.keepalive');
-
+/*print_r($_GET);
+print_r($_POST);
+echo "<hr>"; 
+$jinput = JFactory::getApplication()->input;
+$formData = new JRegistry($jinput->get('jform', '', 'array')); 
+print_r($formData);
+$popup=(isset($_GET['popup'])?$_GET['popup']:null );
+$pop=($popup)?'popup=true&':'';*/
 // Import CSS
 $document = JFactory::getDocument();
 $document->addStyleSheet(JUri::root() . 'media/com_servin/css/form.css');
@@ -22,7 +29,7 @@ $document->addStyleSheet(JUri::root() . 'media/com_servin/css/form.css');
 <script type="text/javascript">
 	js = jQuery.noConflict();
 	js(document).ready(function () {
-		
+	
 	js('input:hidden.material').each(function(){
 		var name = js(this).attr('name');
 		if(name.indexOf('materialhidden')){
@@ -84,12 +91,14 @@ $document->addStyleSheet(JUri::root() . 'media/com_servin/css/form.css');
 	Joomla.submitbutton = function (task) {
 		if (task == 'pieza.cancel') {
 			Joomla.submitform(task, document.getElementById('pieza-form'));
+			window.close();
 		}
 		else {
 			
 			if (task != 'pieza.cancel' && document.formvalidator.isValid(document.id('pieza-form'))) {
 				
 				Joomla.submitform(task, document.getElementById('pieza-form'));
+				
 			}
 			else {
 				alert('<?php echo $this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED')); ?>');
@@ -99,7 +108,7 @@ $document->addStyleSheet(JUri::root() . 'media/com_servin/css/form.css');
 </script>
 
 <form
-	action="<?php echo JRoute::_('index.php?option=com_servin&layout=edit&id=' . (int) $this->item->id); ?>"
+	action="<?php echo JRoute::_('index.php?option=com_servin&layout=edit&id=' . (int) $this->item->id ); ?>"
 	method="post" enctype="multipart/form-data" name="adminForm" id="pieza-form" class="form-validate">
 
 	<div class="form-horizontal">
@@ -109,7 +118,7 @@ $document->addStyleSheet(JUri::root() . 'media/com_servin/css/form.css');
 		<div class="row-fluid">
 			<div class="span10 form-horizontal">
 				<fieldset class="adminform">
-
+				<input type="hidden" name="jform[popup]" value="<?php echo $popup ?>" />
 									<input type="hidden" name="jform[id]" value="<?php echo $this->item->id; ?>" />
 				<input type="hidden" name="jform[ordering]" value="<?php echo $this->item->ordering; ?>" />
 				<input type="hidden" name="jform[state]" value="<?php echo $this->item->state; ?>" />

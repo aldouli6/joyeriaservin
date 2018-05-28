@@ -7,27 +7,20 @@
  * @license    Licencia Pública General GNU versión 2 o posterior. Consulte LICENSE.txt
  */
 
-// No direct access
+// No direct access.
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.controllerform');
+jimport('joomla.application.component.modeladmin');
 
 /**
- * Deuda controller class.
+ * Servin model.
  *
  * @since  1.6
  */
-class ServinControllerDeuda extends JControllerForm
+class ServinModelAjax extends JModelAdmin
 {
-	/**
-	 * Constructor
-	 *
-	 * @throws Exception
-	 */
-	public function __construct()
+	public function getForm ($data = array(), $loadData = true)
 	{
-		$this->view_list = 'deudas';
-		parent::__construct();
-	}
 	
+	}
 }

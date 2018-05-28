@@ -62,11 +62,11 @@ $sortFields = $this->getSortFields();
 						<input type="checkbox" name="checkall-toggle" value=""
 							   title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)"/>
 					</th>
-					<?php if (isset($this->items[0]->state)): ?>
+					<!-- <?php if (isset($this->items[0]->state)): ?>
 						<th width="1%" class="nowrap center">
 								<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.`state`', $listDirn, $listOrder); ?>
 </th>
-					<?php endif; ?>
+					<?php endif; ?> -->
 
 									<th class='left'>
 				<?php echo JHtml::_('searchtools.sort',  'COM_SERVIN_VENTAS_ID', 'a.`id`', $listDirn, $listOrder); ?>
@@ -133,11 +133,11 @@ $sortFields = $this->getSortFields();
 						<td class="hidden-phone">
 							<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 						</td>
-						<?php if (isset($this->items[0]->state)): ?>
+						<!-- <?php if (isset($this->items[0]->state)): ?>
 							<td class="center">
 								<?php echo JHtml::_('jgrid.published', $item->state, $i, 'ventas.', $canChange, 'cb'); ?>
 </td>
-						<?php endif; ?>
+						<?php endif; ?> -->
 
 																				<td>
 				<?php if (isset($item->checked_out) && $item->checked_out && ($canEdit || $canChange)) : ?>

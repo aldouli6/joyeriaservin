@@ -14,6 +14,7 @@ JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 JHtml::_('formbehavior.chosen', 'select');
 JHtml::_('behavior.keepalive');
+JHTML::_('behavior.modal');
 
 // Import CSS
 $document = JFactory::getDocument();
@@ -22,7 +23,31 @@ $document->addStyleSheet(JUri::root() . 'media/com_servin/css/form.css');
 <script type="text/javascript">
 	js = jQuery.noConflict();
 	js(document).ready(function () {
-		
+	console.log(screen.width + " x " + screen.height) 
+	js('#toolbar').append(js('#nuevapieza'));		
+	penultima ='0';
+	js( "#jform_piezas_chzn" ).click(function() {
+		ultima =js('#jform_piezas option:last').val();
+		if(ultima != penultima){
+			js.ajax({ 
+            url: "index.php?option=com_servin&task=nuevapieza&view=ajaxs&tmpl=ajax&id=" + ultima,  
+            async: true, 
+            success: function(result){
+            	var obj = result;
+				var objeto = JSON.parse(obj);
+				js.each( objeto, function( key, value ) {
+					js('#jform_piezas').append('<option value="'+key+'">'+value+'</option>');
+					js("#jform_piezas").trigger("liszt:updated");
+					penultima = key;
+				});
+            	
+            },
+            error: function(result) {
+                console.log('ocurrio un error');
+            }
+        });
+		}
+	});
 	js('input:hidden.piezas').each(function(){
 		var name = js(this).attr('name');
 		if(name.indexOf('piezashidden')){
@@ -75,9 +100,17 @@ $document->addStyleSheet(JUri::root() . 'media/com_servin/css/form.css');
 				<input type="hidden" name="jform[checked_out_time]" value="<?php echo $this->item->checked_out_time; ?>" />
 
 				<?php echo $this->form->renderField('created_by'); ?>
-				<?php echo $this->form->renderField('modified_by'); ?>
+				<?php echo $this->form->renderField('modified_by'); ?>  
 				<?php echo $this->form->renderField('created_at'); ?>
-				<?php echo $this->form->renderField('modified_at'); ?>				<?php echo $this->form->renderField('piezas'); ?>
+				<?php echo $this->form->renderField('modified_at'); ?>				
+				<?php echo $this->form->renderField('piezas'); ?> 
+				<div class="btn-wrapper" id="nuevapieza">
+					<a  class = "btn btn-small button-apply btn-success" href="<?= JUri::base()?>index.php?option=com_servin&view=pieza&layout=edit&popup=true" target="_blank" onclick="window.open(this.href, this.target, 'width='+(screen.width)/2+',height='+(screen.height)/1.3+''); return false;"><span class="icon-new icon-white" aria-hidden="true"></span>Nueva pieza</a>
+					
+				</div>
+				
+				
+
 
 			<?php
 				foreach((array)$this->item->piezas as $value): 

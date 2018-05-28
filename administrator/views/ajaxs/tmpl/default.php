@@ -10,18 +10,25 @@ $task = $jinput->get('task', 'propiedad', 'STRING');
 $output = $jinput->get('out', 'csv', 'STRING');
 
 switch ($task) {
-    case 'preciosugerido':
-      // echo $foo;
-      $db->setQuery("select costo from #__servin_hechuras where id=".$foo);
-      $costo=$db->loadResult();
-      echo $costo;
-    break;
-    case 'consultotal':
-      // echo $foo;
-      $db->setQuery("select precio from #__servin_piezas where id in (".$string.")");
-      $result=$db->loadColumn();
-      echo round(array_sum($result),2);
-    break;
+   
+  case 'preciosugerido':
+    // echo $foo;
+    $db->setQuery("select costo from #__servin_hechuras where id=".$foo);
+    $costo=$db->loadResult();
+    echo $costo;
+  break;
+  case 'consultotal':
+    // echo $foo;
+    $db->setQuery("select precio from #__servin_piezas where id in (".$string.")");
+    $result=$db->loadColumn();
+    echo round(array_sum($result),2);
+  break;
+  case 'nuevapieza':
+    // echo $foo;
+    $db->setQuery("sELECT p.id , concat(h.numero,'|' ,p.descripcion) as descripcion FROM #__servin_piezas as p inner join #__servin_hechuras as h on h.id = p.hechura where p.id > ".$foo);
+    $result=$db->loadAssocList('id','descripcion');
+    echo json_encode($result); 
+  break;
 }
 function toexcel($array,$file){
   $sufix = date(Ymd);

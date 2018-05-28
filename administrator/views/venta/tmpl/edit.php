@@ -20,15 +20,19 @@ $document = JFactory::getDocument();
 $document->addStyleSheet(JUri::root() . 'media/com_servin/css/form.css');
 $db = JFactory::getDbo();
 $query = $db->getQuery(true);
-$piezas=array();
+$piezas=$result=array();
 foreach((array)$this->item->piezas as $value): 
 	if(!is_array($value)):
 		$piezas[]= $value;
 	endif;
 endforeach;
-$query="sELECT p.id FROM #__servin_piezas as p inner join #__servin_hechuras as h on h.id = p.hechura where p.estatus != 1 and p.id not in (".implode(',', $piezas).")";
-$db -> setQuery($query);
-$result=$db -> loadColumn();
+if(!empty($piezas)){
+	$query="sELECT p.id FROM #__servin_piezas as p inner join #__servin_hechuras as h on h.id = p.hechura where p.estatus != 1 and p.id not in (".implode(',', $piezas).")";
+	
+	$db -> setQuery($query);
+	$result=$db -> loadColumn();
+}
+
 ?>
 <script type="text/javascript">
 	js = jQuery.noConflict();

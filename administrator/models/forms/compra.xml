@@ -15,7 +15,17 @@
     <field name="modified_by" type="modifiedby" default="0" label="COM_SERVIN_FORM_LBL_COMPRA_MODIFIED_BY" description="COM_SERVIN_FORM_DESC_COMPRA_MODIFIED_BY" hidden="true" hint="COM_SERVIN_FORM_LBL_COMPRA_MODIFIED_BY"/>
     <field name="created_at" type="timecreated" label="COM_SERVIN_FORM_LBL_COMPRA_CREATED_AT" description="COM_SERVIN_FORM_DESC_COMPRA_CREATED_AT" hidden="true" hint="COM_SERVIN_FORM_LBL_COMPRA_CREATED_AT"/>
     <field name="modified_at" type="timecreated" label="COM_SERVIN_FORM_LBL_COMPRA_MODIFIED_AT" description="COM_SERVIN_FORM_DESC_COMPRA_MODIFIED_AT" hidden="true" hint="COM_SERVIN_FORM_LBL_COMPRA_MODIFIED_AT"/>
-    <field name="piezas" type="foreignkey" label="COM_SERVIN_FORM_LBL_COMPRA_PIEZAS" description="COM_SERVIN_FORM_DESC_COMPRA_PIEZAS" class="inputbox" input_type="list" table="#__servin_piezas" key_field="id" value_multiple="1" value_field_multiple="hechura,descripcion" value_field="fk_value" separator=" " hide_trashed="1" multiple="multiple" default="0"/>
+    <field
+    name="piezas"
+    required="true"
+    type="sql"
+    label="COM_SERVIN_FORM_LBL_VENTA_PIEZAS"
+    description="COM_SERVIN_FORM_DESC_VENTA_PIEZAS"
+    query="select '' as id, 'Selecciona una opción' as descripcion union SELECT p.id, concat(h.numero,'|' ,p.descripcion) as descripcion FROM #__servin_piezas as p inner join #__servin_hechuras as h on h.id = p.hechura  "
+    key_field="id"
+    value_field="descripcion" default="0"
+    />
+
     <field name="fecha" class="inputbox" timeformat="12" filter="user_utc" showtime="true" singleheader="false" todaybutton="true" weeknumbers="false" filltable="false" type="calendar" label="COM_SERVIN_FORM_LBL_COMPRA_FECHA" description="COM_SERVIN_FORM_DESC_COMPRA_FECHA" hint="COM_SERVIN_FORM_LBL_COMPRA_FECHA"/>
     <field name="proveedor" type="foreignkey" label="COM_SERVIN_FORM_LBL_COMPRA_PROVEEDOR" description="COM_SERVIN_FORM_DESC_COMPRA_PROVEEDOR" class="inputbox" input_type="list" table="#__servin_proveedores" key_field="id" value_multiple="1" value_field_multiple="empresa,nombre" value_field="fk_value" separator=" |" hide_trashed="1" default="0"/>
     <field name="total" filter="safehtml" step="0.01" type="number" label="COM_SERVIN_FORM_LBL_COMPRA_TOTAL" description="COM_SERVIN_FORM_DESC_COMPRA_TOTAL" hint="COM_SERVIN_FORM_LBL_COMPRA_TOTAL"/>

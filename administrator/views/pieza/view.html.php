@@ -60,6 +60,7 @@ class ServinViewPieza extends JViewLegacy
 	protected function addToolbar()
 	{
 		JFactory::getApplication()->input->set('hidemainmenu', true);
+		//print_r($_GET);
 
 		$user  = JFactory::getUser();
 		$isNew = ($this->item->id == 0);
@@ -79,18 +80,21 @@ class ServinViewPieza extends JViewLegacy
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create'))))
-		{
+		{	
+			if(!$_GET['popup']){
 			JToolBarHelper::apply('pieza.apply', 'JTOOLBAR_APPLY');
+			}
 			JToolBarHelper::save('pieza.save', 'JTOOLBAR_SAVE');
+
 		}
 
-		if (!$checkedOut && ($canDo->get('core.create')))
+		if (!$checkedOut && ($canDo->get('core.create')) && !$_GET['popup'])
 		{
 			JToolBarHelper::custom('pieza.save2new', 'save-new.png', 'save-new_f2.png', 'JTOOLBAR_SAVE_AND_NEW', false);
 		}
 
 		// If an existing item, can save to a copy.
-		if (!$isNew && $canDo->get('core.create'))
+		if (!$isNew && $canDo->get('core.create') && !$_GET['popup'])
 		{
 			JToolBarHelper::custom('pieza.save2copy', 'save-copy.png', 'save-copy_f2.png', 'JTOOLBAR_SAVE_AS_COPY', false);
 		}

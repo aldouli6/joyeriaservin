@@ -36,6 +36,7 @@ if ($saveOrder)
 $sortFields = $this->getSortFields();
 ?>
 
+
 <form action="<?php echo JRoute::_('index.php?option=com_servin&view=piezas'); ?>" method="post"
 	  name="adminForm" id="adminForm">
 	<?php if (!empty($this->sidebar)): ?>
@@ -196,7 +197,16 @@ $sortFields = $this->getSortFields();
 			<?php echo JHtml::_('form.token'); ?>
 		</div>
 </form>
-<script>
+<script type="text/javascript"> 
+	js = jQuery.noConflict();
+	js(document).ready(function () {
+		var success = js('.alert-success');
+		if (success.length > 0){
+			//alert('close');
+			window.close();
+		}
+		
+    });
     window.toggleField = function (id, task, field) {
 
         var f = document.adminForm, i = 0, cbx, cb = f[ id ];
