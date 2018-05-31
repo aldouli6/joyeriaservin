@@ -239,10 +239,10 @@ class ServinModelCompras extends JModelList
 				{
 					$db    = JFactory::getDbo();
 					$query = $db->getQuery(true);
-					$query
-						->select('CONCAT(`#__servin_piezas_2984831`.`hechura`, \' \', `#__servin_piezas_2984831`.`descripcion`) AS `fk_value`')
+					$query = "sELECT p.id, concat(h.numero,'|' ,p.descripcion) as fk_value FROM #__servin_piezas as p inner join #__servin_hechuras as h on h.id = p.hechura where p.id = ".$db->quote($db->escape($value));
+						/*->select('CONCAT(`#__servin_piezas_2984831`.`hechura`, \' \', `#__servin_piezas_2984831`.`descripcion`) AS `fk_value`')
 						->from($db->quoteName('#__servin_piezas', '#__servin_piezas_2984831'))
-						->where($db->quoteName('id') . ' = '. $db->quote($db->escape($value)));
+						->where($db->quoteName('id') . ' = '. $db->quote($db->escape($value)));*/
 
 					$db->setQuery($query);
 					$results = $db->loadObject();
